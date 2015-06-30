@@ -9,6 +9,9 @@ gem 'pg'
 # Use bootstrap sass as template
 gem 'bootstrap-sass'
 
+# Use simple_form to replace default form_for
+gem 'simple_form'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
