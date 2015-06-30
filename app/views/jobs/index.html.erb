@@ -3,17 +3,12 @@
   <thead>
     <th>Job Title</th>
     <th>Job Description</th>
-    <th>&nbsp</th>
   </thead>
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
         <td><%= link_to job.title, job %></td>
         <td><%= job.description %></td>
-        <td>
-          <%= link_to "Edit", edit_job_path(job), class: "btn btn-primary" %>
-          <%= link_to "Delete", job, method: :delete, class: "btn btn-warning", data: {confirm: "Are you sure?"} %>
-        </td>
       </tr>
     <% end %>
   </tbody>
