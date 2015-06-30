@@ -16,14 +16,21 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.create(job_params)
-    redirect_to jobs_path
+    @job = Job.new(job_params)
+    if @job.save
+      redirect_to jobs_path
+    else
+      render :new
+    end
   end
 
   def update
     @job = Job.find(params[:id])
-    @job.update(job_params)
-    redirect_to jobs_path
+    if @job.update(job_params)
+      redirect_to jobs_path
+    else
+      render :edit
+    end
   end
 
   def destroy
