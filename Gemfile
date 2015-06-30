@@ -41,3 +41,13 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'quiet_assets'
+
+  gem 'rails_best_practices'
+
+  gem 'rubocop'
+
+  gem 'brakeman'
+end
+
