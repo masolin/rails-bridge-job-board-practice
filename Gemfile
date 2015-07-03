@@ -12,6 +12,9 @@ gem 'bootstrap-sass'
 # Use simple_form to replace default form_for
 gem 'simple_form'
 
+# Use datatables to sort table
+gem 'jquery-datatables-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
