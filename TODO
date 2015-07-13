@@ -2,7 +2,7 @@
  ✔ Add validations — postings without titles or descriptions shouldn't be allowed, right? @done (15-06-30 16:52)
  ✔ Add other useful fields to jobs @done (15-06-30 20:16)
  ✔ Display jobs index in a table; make sortable with data_tables @done (15-07-03 14:35)
- ☐ Add tags (time for a has_many, folks!!!)
- ☐ Make it look better
+ ✔ Add tags (time for a has_many, folks!!!) @done (15-07-13 21:19)
+ ✔ Make it look better @done (15-07-13 21:19)
  ☐ Add a user model and auth with Devise
  ☐ Test it! Write a controller spec.

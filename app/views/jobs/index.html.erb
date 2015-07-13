@@ -3,13 +3,19 @@
   <thead>
     <th>Job Title</th>
     <th class="no-sort">Job Description</th>
+    <th class="no-sort">Tags</th>
     <th>Base Salary</th>
   </thead>
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
         <td><%= link_to job.title, job %></td>
-        <td><%= job.description %></td>
+        <td><%= render_job_description(job) %></td>
+        <td>
+          <% job.tags.each do |tag| %>
+            <%= link_to tag.name, tag_link(tag), class: "label label-info" %>
+          <% end %>
+        </td>
         <td><%= number_to_currency(job.salary, precision: 0) %></td>
       </tr>
     <% end %>
