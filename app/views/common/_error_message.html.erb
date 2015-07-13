@@ -1,0 +1,10 @@
+<% if job.errors.any? %>
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(job.errors.count, "error") %>.
+    </div>
+    <ul class="text-danger">
+      <% job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>

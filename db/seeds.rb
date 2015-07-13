@@ -13,6 +13,7 @@ puts 'Start seeds!'
     description: Faker::Lorem.paragraphs(4, true).join("\n"),
     phone: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email,
+    salary: Faker::Number.between(22, 300) * 1000,
   }
   Job.create!(fake_data)
 end

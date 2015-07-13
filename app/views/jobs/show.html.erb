@@ -3,9 +3,10 @@
   <%= link_to "Delete", @job, method: :delete, class: "btn btn-warning pull-right" %>
   <%= link_to "Edit", edit_job_path(@job), class: "btn btn-primary pull-right" %>
 </h1>
+<h2><%= number_to_currency(@job.salary, precision: 0) %> per month</h2>
 <%= simple_format(@job.description) %>
 <h2>Contact Information</h2>
 <ul>
-  <li>Email: <%= @job.email %></li>
+  <li>Email: <%= mail_to(@job.email) %></li>
   <li>Phone: <%= @job.phone %></li>
 </ul>
