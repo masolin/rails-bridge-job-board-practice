@@ -52,6 +52,15 @@ group :development, :test do
 
   # use faker to generate fake data
   gem 'faker'
+
+  # use rspec to test
+  gem 'rspec-rails'
+
+  # use factory_girl for test data
+  gem 'factory_girl_rails'
+
+  # use pry to debug
+  gem 'pry-rails'
 end
 
 group :development do
@@ -63,4 +72,3 @@ group :development do
 
   gem 'brakeman'
 end
-
