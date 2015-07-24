@@ -12,7 +12,7 @@ class Job < ActiveRecord::Base
   validates :user_id, presence: true
 
   def self.tagged_with(name)
-    Tag.find_by(name: name).jobs
+    Tag.includes(jobs: :tags).find_by(name: name).jobs
   end
 
   def all_tags=(names)
