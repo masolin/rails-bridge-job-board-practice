@@ -45,8 +45,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'database_cleaner', group: :test
 
-# Use heroku to deploy
-gem 'rails_12factor', group: :production
+group :production do
+  # Use heroku to deploy
+  gem 'rails_12factor'
+
+  # Switch to passenger + nginx web server
+  gem 'passenger'
+
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

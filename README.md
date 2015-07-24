@@ -18,4 +18,4 @@ This project is my practice of rails bridge job board. I tried to reproduce job 
 
 
 ## Demo
-[My Rails 101s Practice Hosted on Heroku.](https://calm-mesa-6313.herokuapp.com)
+[My Rails Bridge Job Board Practice Hosted on Heroku.](https://rails-bridge-job-board.herokuapp.com)
