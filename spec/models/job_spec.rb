@@ -36,12 +36,6 @@ RSpec.describe Job, type: :model do
     expect(job.errors[:salary]).to include("can't be blank")
   end
 
-  it "is invalid when salary is not integer" do
-    job = build(:job, salary: 0.7)
-    job.valid?
-    expect(job.errors[:salary]).to include('must be an integer')
-  end
-
   it "is invalid when salary < 0" do
     job = build(:job, salary: -1)
     job.valid?
