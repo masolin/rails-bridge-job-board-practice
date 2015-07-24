@@ -1,7 +1,9 @@
 <h1>
   <%= @job.title %>
-  <%= link_to "Delete", @job, method: :delete, class: "btn btn-warning pull-right" %>
-  <%= link_to "Edit", edit_job_path(@job), class: "btn btn-primary pull-right" %>
+  <% if current_user && @job.editable_by?(current_user) %>
+    <%= link_to "Delete", @job, method: :delete, class: "btn btn-warning pull-right" %>
+    <%= link_to "Edit", edit_job_path(@job), class: "btn btn-primary pull-right" %>
+  <% end %>
 </h1>
 <h2><%= number_to_currency(@job.salary, precision: 0) %> per month</h2>
 <%= simple_format(@job.description) %>

@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @jobs = params[:tag] ? Job.tagged_with(params[:tag]) : Job.all
   end
@@ -9,6 +11,9 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    unless @job.editable_by?(current_user)
+      redirect_to @job, alert: 'You have no permission to edit it.'
+    end
   end
 
   def show
@@ -17,6 +22,7 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+    @job.author = current_user
     if @job.save
       redirect_to @job
     else
@@ -26,6 +32,10 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
+    unless @job.editable_by?(current_user)
+      return redirect_to @job, alert: 'You have no permission to edit it.'
+    end
+
     if @job.update(job_params)
       redirect_to @job
     else
@@ -35,6 +45,10 @@ class JobsController < ApplicationController
 
   def destroy
     @job = Job.find(params[:id])
+    unless @job.editable_by?(current_user)
+      return redirect_to @job, alert: 'You have no permission to delete it.'
+    end
+
     @job.destroy
     redirect_to jobs_path
   end

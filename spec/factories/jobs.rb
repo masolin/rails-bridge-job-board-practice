@@ -6,6 +6,7 @@ FactoryGirl.define do
     email 'kayla@feeney.biz'
     salary 25000
     all_tags 'Computers, Tools, Books'
+    author factory: :user
 
     factory :rails_job do
       title 'Rails Engineer'

@@ -73,6 +73,12 @@ RSpec.describe Job, type: :model do
     expect(job.errors[:phone]).to include("can't be blank")
   end
 
+  it "is invalid without author" do
+    job = build(:job, author: nil)
+    job.valid?
+    expect(job.errors[:user_id]).to include("can't be blank")
+  end
+
   it "is valid with space tags" do
     job = build(:job, all_tags: ' ')
     job.valid?
@@ -86,20 +92,41 @@ RSpec.describe Job, type: :model do
 
   describe "filter jobs by tag" do
     before :each do
-      @front_end_job = create(:job)
-      @rails_job = create(:rails_job)
-      @test_job = create(:test_job)
+      user = create(:user)
+      @front_end_job = create(:job, author: user)
+      @rails_job = create(:rails_job, author: user)
+      @test_job = create(:test_job, author: user)
     end
 
     context "with match tag name" do
       it "returns an array of jobs with specific tag" do
-        expect(Job.tagged_with('Computers')).to eq [@front_end_job, @rails_job]
+        expect(Job.tagged_with('Computers')).to match_array [@front_end_job, @rails_job]
       end
     end
 
     context "with non-match tag name" do
       it "omits results without specific tag" do
         expect(Job.tagged_with('Computers')).not_to include @test_job
+      end
+    end
+  end
+
+  describe 'check if job can be edited by current user' do
+    before :each do
+      @james_job = create(:job)
+      @andy = create(:user, email: 'andy@test.com')
+      @andy_job = create(:job, author: @andy)
+    end
+
+    context 'when user is author' do
+      it 'return true' do
+        expect(@andy_job.editable_by?(@andy)).to be true
+      end
+    end
+
+    context 'when user is not author' do
+      it 'return false' do
+        expect(@james_job.editable_by?(@andy)).to be false
       end
     end
   end

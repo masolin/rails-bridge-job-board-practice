@@ -5,7 +5,28 @@
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Add Job", new_job_path %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Add Job", new_job_path %></li>
+        <li>
+         <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span>
+            Logout
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-user"></span>
+            Sign up
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in"></span>
+            Login
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>

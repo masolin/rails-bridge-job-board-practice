@@ -1,8 +1,8 @@
 <%= simple_form_for(job) do |f| %>
   <%= render "common/error_message", job: job %>
   <%= f.input :title %>
-  <%= f.input :description, input_html: {size: '60x6'} %>
-  <%= f.input :salary %>
+  <%= f.input :description, input_html: { size: '60x6' } %>
+  <%= f.input :salary, input_html: { step: 1 } %>
   <%= f.input :phone %>
   <%= f.input :email, placeholder: "user@domain.com" %>
   <%= f.input :all_tags, as: :text, placeholder: "tag1, tag2, tag3" %>
